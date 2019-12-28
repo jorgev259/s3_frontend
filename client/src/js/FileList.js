@@ -4,11 +4,11 @@ import '../css/File.css'
 export default class FileList extends React.Component {
   render () {
     return (
-      <div className='col-md-9 animated fadeInRight'>
+      <div className='col-md-8 animated fadeInRight'>
         <div className='row'>
           <div className='col-lg-12'>
             <div className='file-box'>
-              {this.props.files.map(file => <File key={file} filename={file} />)}
+              {this.props.files.map(file => <File folder={this.props.folder} key={file} filename={file} />)}
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@ class File extends React.Component {
   render () {
     return (
       <div className='file'>
-        <a>
+        <a href={`https://helix.squid-proxy.xyz/${this.props.folder}/${this.props.filename}`} download>
           <span className='corner' />
           <div className='file-name' style={{ wordWrap: 'break-word' }}>
             {this.props.filename}

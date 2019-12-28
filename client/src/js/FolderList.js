@@ -1,5 +1,6 @@
 import React from 'React'
 import '../css/Search.css'
+import '../css/Folder.css'
 
 export default class FolderList extends React.Component {
   state={ searchResult: [], searchQuery: '' }
@@ -15,7 +16,7 @@ export default class FolderList extends React.Component {
   render () {
     return (
       <div
-        className='col-md-3'
+        className='col-md-4'
       >
         <div className='search'>
           <input type='text' className='searchTerm' placeholder='What are you looking for?' onChange={this.handleSearch} />

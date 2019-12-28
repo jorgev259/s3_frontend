@@ -22,7 +22,7 @@ export default class App extends React.Component {
     return (
       <>
         <FolderList folders={Object.keys(this.state.s3Files)} updateCurrent={this.updateCurrent.bind(this)} />
-        <FileList files={this.state.s3Files[this.state.current] || []} />
+        <FileList folder={this.state.current} files={this.state.s3Files[this.state.current] || []} />
       </>
     )
   }
