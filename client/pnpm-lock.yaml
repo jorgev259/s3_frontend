@@ -7,6 +7,7 @@ dependencies:
   '@testing-library/user-event': 7.2.1
   axios: 0.19.0
   babel-plugin-transform-class-properties: 6.24.1
+  babel-polyfill: 6.26.0
   bootstrap: 4.4.1
   customize-cra: 0.9.1
   font-awesome: 4.7.0
@@ -15,6 +16,7 @@ dependencies:
   react-bootstrap: 1.0.0-beta.16_react-dom@16.12.0+react@16.12.0
   react-dom: 16.12.0_react@16.12.0
   react-scripts: 3.3.0
+  web-ping: 1.0.0
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.5.5:
@@ -2919,6 +2921,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-eqj0hVcJUR57/Ug2zE1Yswsw4LhuqqHhD+8v120T1cl3kjg76QwtyBrdIk4WVwK+lAhBJVYCd/v+4nc4y+8JsA==
+  /babel-polyfill/6.26.0:
+    dependencies:
+      babel-runtime: 6.26.0
+      core-js: 2.6.11
+      regenerator-runtime: 0.10.5
+    dev: false
+    resolution:
+      integrity: sha1-N5k3q8Z9eJWXCtxiHyhM2WbPIVM=
   /babel-preset-jest/24.9.0_@babel+core@7.7.4:
     dependencies:
       '@babel/core': 7.7.4
@@ -3992,7 +4002,7 @@ packages:
     dependencies:
       inherits: 2.0.4
       source-map: 0.6.1
-      source-map-resolve: 0.5.2
+      source-map-resolve: 0.5.3
       urix: 0.1.0
     dev: false
     resolution:
@@ -9758,6 +9768,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-1G6jJVDWrt0rK99kBjvEtziZNCICAuvIPkSiUFIQxVP06RCVpq3dmDo2oi6ABpYaDYaTRr67BEhL8r1wgEZZKg==
+  /regenerator-runtime/0.10.5:
+    dev: false
+    resolution:
+      integrity: sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
   /regenerator-runtime/0.11.1:
     dev: false
     resolution:
@@ -10399,7 +10413,7 @@ packages:
       extend-shallow: 2.0.1
       map-cache: 0.2.2
       source-map: 0.5.7
-      source-map-resolve: 0.5.2
+      source-map-resolve: 0.5.3
       use: 3.1.1
     dev: false
     engines:
@@ -10436,7 +10450,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
-  /source-map-resolve/0.5.2:
+  /source-map-resolve/0.5.3:
     dependencies:
       atob: 2.1.2
       decode-uri-component: 0.2.0
@@ -10445,7 +10459,7 @@ packages:
       urix: 0.1.0
     dev: false
     resolution:
-      integrity: sha512-MjqsvNwyz1s0k81Goz/9vRBe9SZdB09Bdw+/zYyO+3CuPk6fouTaxscHkgtE8jKvf01kVfl8riHzERQ/kefaSA==
+      integrity: sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==
   /source-map-support/0.5.16:
     dependencies:
       buffer-from: 1.1.1
@@ -11428,6 +11442,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
+  /web-ping/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-O0Ix7JbBbFVDl93qlDWFGXCXMxs=
   /webidl-conversions/4.0.2:
     dev: false
     resolution:
@@ -11901,6 +11919,7 @@ specifiers:
   '@testing-library/user-event': ^7.2.1
   axios: ^0.19.0
   babel-plugin-transform-class-properties: ^6.24.1
+  babel-polyfill: ^6.26.0
   bootstrap: ^4.4.1
   customize-cra: ^0.9.1
   font-awesome: ^4.7.0
@@ -11909,3 +11928,4 @@ specifiers:
   react-bootstrap: ^1.0.0-beta.16
   react-dom: ^16.12.0
   react-scripts: 3.3.0
+  web-ping: ^1.0.0

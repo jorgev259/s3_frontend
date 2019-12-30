@@ -13,6 +13,13 @@ export default class FolderList extends React.Component {
     })
   }
 
+  handleRegion = (ev) => {
+    ev.persist()
+    this.props.updateState({
+      region: ev.target.value
+    })
+  }
+
   render () {
     return (
       <div
@@ -21,6 +28,12 @@ export default class FolderList extends React.Component {
         <div className='search'>
           <input type='text' className='searchTerm' placeholder='What are you looking for?' onChange={this.handleSearch} />
         </div>
+
+        <span className='custom-dropdown'>
+          <select onChange={this.handleRegion}>
+            {this.props.regions.map(region => <option value={region.region} key={region.region}>{region.region}</option>)}
+          </select>
+        </span>
         <div
           className='ibox float-e-margins' style={{
             maxHeight: '85vh',
@@ -32,8 +45,8 @@ export default class FolderList extends React.Component {
             <div className='file-manager'>
               <ul className='folder-list' style={{ padding: 0 }}>
                 {this.state.searchQuery !== ''
-                  ? this.state.searchResult.map(folder => <Folder key={folder} name={folder} updateCurrent={this.props.updateCurrent} />)
-                  : this.props.folders.map(folder => <Folder key={folder} name={folder} updateCurrent={this.props.updateCurrent} />)}
+                  ? this.state.searchResult.map(folder => <Folder key={folder} name={folder} updateState={this.props.updateState} />)
+                  : this.props.folders.map(folder => <Folder key={folder} name={folder} updateState={this.props.updateState} />)}
               </ul>
               <div className='clearfix' />
             </div>
@@ -47,7 +60,7 @@ export default class FolderList extends React.Component {
 class Folder extends React.Component {
   render () {
     return (
-      <li onClick={() => this.props.updateCurrent(this.props.name)}><a><i className='fa fa-folder' />{this.props.name}</a></li>
+      <li onClick={() => this.props.updateState({ current: this.props.name })}><a><i className='fa fa-folder' />{this.props.name}</a></li>
     )
   }
 }

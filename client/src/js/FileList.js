@@ -8,7 +8,7 @@ export default class FileList extends React.Component {
         <div className='row'>
           <div className='col-lg-12'>
             <div className='file-box'>
-              {this.props.files.map(file => <File folder={this.props.folder} key={file} filename={file} />)}
+              {this.props.files.map(file => <File public={this.props.region.public} folder={this.props.folder} key={file} filename={file} />)}
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@ class File extends React.Component {
   render () {
     return (
       <div className='file'>
-        <a href={`https://helix.squid-proxy.xyz/${this.props.folder}/${this.props.filename}`} download>
+        <a href={`https://${this.props.public}/${this.props.folder}/${this.props.filename}`} download>
           <span className='corner' />
           <div className='file-name' style={{ wordWrap: 'break-word' }}>
             {this.props.filename}
