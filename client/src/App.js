@@ -17,7 +17,6 @@ export default class App extends React.Component {
   componentDidMount () {
     const context = this
     get('api/regions').then(res => {
-      console.log(res.data)
       const promises = Object.keys(res.data).map(region => {
         return new Promise((resolve, reject) => {
           ping(res.data[region].endpoint).then(function (delta) {
