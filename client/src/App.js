@@ -7,7 +7,7 @@ import FolderList from './js/FolderList'
 import { get } from 'axios'
 
 export default class App extends React.Component {
-  state = { s3Files: {}, current: '', region: '', regions: [] }
+  state = { s3Files: {}, current: '', region: '', regions: {} }
 
   updateState (current) {
     this.setState(current)
@@ -15,10 +15,7 @@ export default class App extends React.Component {
 
   componentDidMount () {
     const context = this
-    get('api/regions').then(res => {
-      const regions = Object.keys(res.data)
-      context.setState({ regions: regions, region: regions[0].region })
-    })
+    get('api/regions').then(res => context.setState({ regions: res.data, region: Object.keys(res.data)[0] }))
   }
 
   componentDidUpdate () {
@@ -30,7 +27,7 @@ export default class App extends React.Component {
     return (
       <>
         <FolderList regions={this.state.regions} folders={Object.keys(this.state.s3Files)} updateState={this.updateState.bind(this)} />
-        <FileList region={this.state.regions.find(e => e.region === this.state.region)} folder={this.state.current} files={this.state.s3Files[this.state.current] || []} />
+        <FileList region={this.state.regions[this.state.region]} folder={this.state.current} files={this.state.s3Files[this.state.current] || []} />
       </>
     )
   }

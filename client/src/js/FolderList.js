@@ -31,7 +31,7 @@ export default class FolderList extends React.Component {
 
         <span className='custom-dropdown'>
           <select onChange={this.handleRegion}>
-            {this.props.regions.map(region => <option value={region.region} key={region.region}>{region.region}</option>)}
+            {Object.keys(this.props.regions).map(region => <option value={region} key={region}>{region}</option>)}
           </select>
         </span>
         <div

@@ -14,7 +14,7 @@ async function start () {
 
   app.get('/api/regions', function (req, res) {
     const response = {}
-    Object.keys(regions).forEach(region => { response[region] = { endpoint: regions[region].s3Options.endpoint, public: regions[region].s3Options.Bucket } })
+    Object.keys(regions).forEach(region => { response[region] = { public: regions[region].s3Options.Bucket } })
     res.send(response)
   })
 
