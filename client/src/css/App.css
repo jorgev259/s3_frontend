@@ -79,6 +79,8 @@ background-color: #ffffff;
 position: relative;
 margin-bottom: 20px;
 margin-right: 20px;
+width: 200px;
+display: inline-block
 }
 .file-manager .hr-line-dashed {
 margin: 15px 0;

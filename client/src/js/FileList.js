@@ -7,9 +7,7 @@ export default class FileList extends React.Component {
       <div className='col-md-8 animated fadeInRight'>
         <div className='row'>
           <div className='col-lg-12'>
-            <div className='file-box'>
-              {this.props.files.map(file => <File public={this.props.region.public} folder={this.props.folder} key={file} filename={file} />)}
-            </div>
+            {this.props.files.map(file => <File public={this.props.region.public} folder={this.props.folder} key={file} filename={file} />)}
           </div>
         </div>
       </div>
