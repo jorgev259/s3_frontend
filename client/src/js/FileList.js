@@ -1,4 +1,4 @@
-import React from 'React'
+import React from 'react'
 import '../css/File.css'
 
 export default class FileList extends React.Component {
