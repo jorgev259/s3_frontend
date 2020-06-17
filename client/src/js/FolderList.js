@@ -5,48 +5,18 @@ import '../css/Folder.css'
 export default class FolderList extends React.Component {
   state={ searchResult: [], searchQuery: '' }
 
-  handleSearch = (ev) => {
-    ev.persist()
-    this.setState({
-      searchResult: this.props.folders.filter(folder => folder.includes(ev.target.value.toUpperCase())),
-      searchQuery: ev.target.value
-    })
-  }
-
-  handleRegion = (ev) => {
-    ev.persist()
-    this.props.updateState({
-      region: ev.target.value
-    })
-  }
-
   render () {
     return (
-      <div
-        className='col-md-4'
-      >
-        <div className='search'>
-          <input type='text' className='searchTerm' placeholder='What are you looking for?' onChange={this.handleSearch} />
-        </div>
-
-        <span className='custom-dropdown'>
-          <select onChange={this.handleRegion}>
-            {Object.keys(this.props.regions).map(region => <option value={region} key={region}>{region}</option>)}
-          </select>
-        </span>
-        <div
-          className='ibox float-e-margins' style={{
-            maxHeight: '85vh',
-            overflowY: 'scroll',
-            overflowX: 'hidden'
-          }}
-        >
+      <div className='col-md-12'>
+        <div className='ibox float-e-margins'>
           <div className='ibox-content'>
             <div className='file-manager'>
               <ul className='folder-list' style={{ padding: 0 }}>
-                {this.state.searchQuery !== ''
-                  ? this.state.searchResult.map(folder => <Folder key={folder} name={folder} updateState={this.props.updateState} />)
-                  : this.props.folders.map(folder => <Folder key={folder} name={folder} updateState={this.props.updateState} />)}
+                {this.props.folders.map(({ children, name }, i) => (
+                  children.length > 0
+                    ? <Folder key={i} name={name} children={children} depth={0} path={['https:/', this.props.regions[this.props.region] ? this.props.regions[this.props.region].public : '', name]} />
+                    : <li><a href={['https:/', this.props.regions[this.props.region] ? this.props.regions[this.props.region].public : '', name].join('/')} download><i className='fa fa-file' />{name}</a></li>
+                ))}
               </ul>
               <div className='clearfix' />
             </div>
@@ -58,9 +28,17 @@ export default class FolderList extends React.Component {
 }
 
 class Folder extends React.Component {
+  state = { open: false }
   render () {
     return (
-      <li onClick={() => this.props.updateState({ current: this.props.name })}><a><i className='fa fa-folder' />{this.props.name}</a></li>
+      <>
+        <li style={{ marginLeft: `${10 * this.props.depth}px` }} onClick={() => this.setState({ open: !this.state.open })}><a><i className={`fa fa-folder${this.state.open ? '-open' : ''}`} />{this.props.name}</a></li>
+        {this.state.open ? this.props.children.map(({ children, name }, i) => (
+          children.length > 0
+            ? <Folder depth={this.props.depth + 1} key={i} name={name} children={children} path={[...this.props.path, name]} />
+            : <li style={{ marginLeft: `${10 * (this.props.depth + 1)}px` }}><a href={[...this.props.path, name].join('/')} download><i className='fa fa-file' />{name}</a></li>
+        )) : null}
+      </>
     )
   }
 }

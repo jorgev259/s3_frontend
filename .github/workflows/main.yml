@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v2
+      
+
+    # Runs a set of commands using the runners shell
+    - run: cd client
+    - run: yarn install
+    - run: npm run build
+    - run: |
+        mv build ../build
+        git config --global user.email "jorgev259@outlook.es"
+        git config --global user.name "jorgev259"
+        git fetch --all
+        git stash
+        git checkout -t origin/dist
+        rm -r *
+        cp -r ../build/* ./
+        git add -A
+        git commit -m 'Deploy!'
+        git push

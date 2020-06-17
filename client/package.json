@@ -22,7 +22,7 @@
     "react-app-rewired": "^2.1.5",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
+    "react-scripts": "^3.4.0",
     "web-ping": "^1.0.0"
   },
   "scripts": {

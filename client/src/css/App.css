@@ -2,7 +2,9 @@
 body{margin-top:20px;
   background:#eee;
 }
-
+.sticky-top{
+  background: #eee;
+}
 .file-box {
 float: left;
 width: 220px;
