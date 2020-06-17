@@ -7,7 +7,6 @@ app.use(cors({ credentials: true, origin: true }))
 
 async function start () {
   const files = await require('./s3_import')()
-  app.use('/', express.static('public'))
   app.get('/api/files/:region', function (req, res) {
     res.send(files[req.params.region])
   })
