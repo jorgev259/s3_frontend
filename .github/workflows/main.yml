@@ -27,7 +27,8 @@ jobs:
         cd client
         yarn install
         yarn build
-        mv build ../build
+        mv build ../../build 
+        cd ..
         git config --global user.email "jorgev259@outlook.es"
         git config --global user.name "jorgev259"
         git fetch --all
