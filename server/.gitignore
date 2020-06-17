@@ -1,2 +1,4 @@
 public
 sqlite3.db*
+config.json
+node_modules
