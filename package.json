@@ -1,0 +1,12 @@
+{
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "standard": "^14.3.4"
+  }
+}
