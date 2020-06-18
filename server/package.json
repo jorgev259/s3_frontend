@@ -6,6 +6,9 @@
   "scripts": {
     "start": "nodemon --watch ./ --exec \"node ./main.js\""
   },
+  "standard": {
+    "parser": "babel-eslint"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

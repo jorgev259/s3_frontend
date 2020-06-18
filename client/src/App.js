@@ -9,17 +9,11 @@ export default class App extends React.Component {
   state = { s3Files: [], current: '', region: '', regions: {}, message: 'Custom message not retrieved' }
 
   componentDidMount () {
-    get('api/regions').then(res => this.setState({ regions: res.data, region: Object.keys(res.data)[0] }))
+    get('api/regions').then(res => this.setState({ regions: res.data, region: Object.keys(res.data)[0] }, this.refreshFiles))
     get('api/message').then(res => this.setState({ message: res.data }))
   }
 
-  handlePathList (parent, list) {
-    if (list.length > 1) {
-      return parent[list.shift()]
-    }
-  }
-
-  componentDidUpdate () {
+  refreshFiles(){
     get(`api/files/${this.state.region}`).then(res => {
       const paths = res.data
       const result = []
@@ -52,7 +46,7 @@ export default class App extends React.Component {
     ev.persist()
     this.setState({
       region: ev.target.value
-    })
+    }, this.refreshFiles)
   }
 
   render () {
