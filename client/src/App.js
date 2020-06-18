@@ -88,7 +88,7 @@ export default class App extends React.Component {
               <div className='ibox-content'>
                 {this.state.loading ? (
                   <div className='spin mx-auto' style={{ height: '100px', width: '100px' }}>
-                    <img src='/img/clouds.png' style={{ height: '100px', width: '100px' }} />
+                    <img alt='' src='/img/clouds.png' style={{ height: '100px', width: '100px' }} />
                   </div>
                 ) : <FolderList {...this.state} {...this.state.regions[this.state.region]} />}
               </div>
