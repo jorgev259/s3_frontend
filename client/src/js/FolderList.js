@@ -29,7 +29,7 @@ class Folder extends React.Component {
   render () {
     var items = this.props.children.map((item, i) => (
       item.children.length > 0
-        ? <Folder key={i} search={this.props.search} {...item} depth={this.props.depth + 1} path={[...this.props.path, this.props.name, item.name]} />
+        ? <Folder key={i} search={this.props.search} {...item} depth={this.props.depth + 1} path={[...this.props.path, item.name]} />
         : <li key={i} style={{ marginLeft: `${10 * (this.props.depth + 1)}px` }}><a href={urljoin('https://', ...this.props.path, item.name)} download><i className='fa fa-file' />{item.name}</a></li>
 
     ))
