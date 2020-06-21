@@ -1,4 +1,5 @@
 import React from 'react'
+import Parser from 'html-react-parser'
 import './css/App.css'
 
 import FolderList from './js/FolderList'
@@ -76,7 +77,7 @@ export default class App extends React.Component {
           <div className='row' style={{ height: '40px' }}>
             <div className='col-md-12'>
               <span>
-                {this.state.message}
+                {Parser(this.state.message)}
               </span>
             </div>
           </div>
